@@ -1,0 +1,37 @@
+name: nest_ecommerce
+
+services:
+  # 1. MySQL Database Container
+  db:
+    image: mysql:8.0
+    container_name: nest_ecommerce_db
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_123
+      MYSQL_DATABASE: nest_ecommerce_db
+      MYSQL_USER: nest_user
+      MYSQL_PASSWORD: nest_password_123
+    volumes:
+      - nest_mysql_data:/var/lib/mysql
+
+  # 2. NestJS Backend Container (Dùng khi deploy hoặc muốn chạy đóng gói toàn bộ qua Docker)
+  # Khi code hàng ngày ở máy: Chỉ cần chạy "docker compose up -d db" và gõ "npm run start:dev" ở máy thật
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_ecommerce_api
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      DATABASE_URL: "mysql://nest_user:nest_password_123@db:3306/nest_ecommerce_db"
+    depends_on:
+      - db
+
+volumes:
+  nest_mysql_data:

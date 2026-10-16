@@ -43,15 +43,15 @@
 ### 🟢 PHASE 1: CORE FOUNDATION & GLOBAL INFRASTRUCTURE
 > **Mục tiêu:** Xây dựng khung chuẩn NestJS (Global Pipes, Filters, Swagger, Prisma Service).
 
-- [ ] **1.1 Xây dựng `PrismaModule` & `PrismaService`**
+- [x] **1.1 Xây dựng `PrismaModule` & `PrismaService`**
   - Tạo `src/prisma/prisma.service.ts` kết nối DB (`OnModuleInit`).
   - Tạo `src/prisma/prisma.module.ts` gắn `@Global()` để dùng ở mọi nơi không cần import lại.
-- [ ] **1.2 Cấu hình Global Exception Filter**
-  - Tạo `src/common/filters/http-exception.filter.ts`.
+- [x] **1.2 Cấu hình Global Exception Filter**
+  - Tạo `src/common/filters/http.exception.filter.ts`.
   - Giữ nguyên cấu trúc trả lỗi đồng nhất từ Express: `{ message, code?, errors?, details? }`.
-- [ ] **1.3 Cấu hình Global Validation Pipe & Transform**
+- [x] **1.3 Cấu hình Global Validation Pipe & Transform**
   - Kích hoạt `ValidationPipe({ whitelist: true, transform: true })` trong `main.ts`.
-- [ ] **1.4 Cấu hình Middleware cơ bản & Swagger**
+- [x] **1.4 Cấu hình Middleware cơ bản & Swagger**
   - Cấu hình Global Prefix: `/api`.
   - Cấu hình CORS (`credentials: true`, `origin: 'http://localhost:5173'`).
   - Cấu hình `cookie-parser`.
@@ -62,7 +62,7 @@
 ### 🟢 PHASE 2: AUTH, SECURITY & USER MANAGEMENT
 > **Mục tiêu:** Đăng ký, đăng nhập JWT, gửi OTP qua mail, phân quyền Role Guard.
 
-- [ ] **2.1 Mail Module (Nodemailer)**
+- [x] **2.1 Mail Module (Nodemailer)**
   - Tạo `MailModule`, `MailService` gửi mã OTP 6 số qua Gmail SMTP.
 - [ ] **2.2 Auth Module**
   - Cài đặt `@nestjs/jwt`, `@nestjs/passport`, `passport`, `passport-jwt`, `bcrypt`.
